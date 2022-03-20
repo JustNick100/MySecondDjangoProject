@@ -1,0 +1,711 @@
+{% extends 'admin/base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+<div class="wrapper">
+
+  
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="{% static 'img/user2-160x160.jpg' %}" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Alexander Pierce</a>
+        </div>
+      </div>
+
+      <!-- SidebarSearch Form -->
+      <div class="form-inline">
+        <div class="input-group" data-widget="sidebar-search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+          <div class="input-group-append">
+            <button class="btn btn-sidebar">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item menu-close">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Users
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'adminpanel:users' %}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Users</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'adminpanel:agents' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Agents</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item menu-close">
+            <a href="#" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Categories
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'adminpanel:categories' %}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Categories</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'adminpanel:categories_suggestions' %}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Categories-Suggestions</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item menu-close">
+            <a href="#" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Transcripts
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'adminpanel:transcripts' %}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Transcripts</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'adminpanel:transcripts_messages' %}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Transcripts-messages</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item menu-close">
+            <a href="#" class="nav-link ">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Languages
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'adminpanel:clients' %}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Clients</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'adminpanel:languages' %}" class="nav-link ">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Languages</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'adminpanel:language_translations' %}" class="nav-link " >
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Language-Translations</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Service
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'adminpanel:services' %}" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Services</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Admin Page</h1>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="container-fluid">
+        
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Services Table</h3>
+
+                
+
+                <div class="card-tools">
+
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <button type="button" class="btn btn-success  " data-toggle="modal" data-target="#modal-service">
+                    Add new service
+                    </button>
+                  </div>
+
+                   <div class="modal fade" id="modal-service">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">Service</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                             <form>
+                                <div class="card-body">
+
+                                  <div class="form-group">
+                                    <label for="title">Title</label>
+                                    <input type="text" class="form-control" id="title" placeholder="Title">
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <textarea class="form-control" id="description" placeholder="description"></textarea> 
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="procedure">procedure</label>
+                                    <textarea class="form-control" id="procedure" placeholder="procedure"></textarea> 
+                                  </div>
+
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                  <button type="submit" class="btn btn-primary">Save</button>
+                                  <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                                </div>
+                              </form>
+                          </div>
+
+                        </div>
+                        <!-- /.modal-content -->
+                      </div>
+                      <!-- /.modal-dialog -->
+                    </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Title</th>
+                      <th>Description</th>
+                      <th>Procedure</th>
+                      <th>Action</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>title1</td>
+                      <td>description1</td>
+                      <td>procedure1</td>
+                      <td class="project-actions text-left">
+                          <a class="btn btn-info btn-sm" href="#">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Edit
+                          </a>
+                          <a class="btn btn-danger btn-sm" href="#">
+                              <i class="fas fa-trash">
+                              </i>
+                              Delete
+                          </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>title2</td>
+                      <td>description2</td>
+                      <td>procedure2</td>
+                      <td class="project-actions text-left">
+                          <a class="btn btn-info btn-sm" href="#">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Edit
+                          </a>
+                          <a class="btn btn-danger btn-sm" href="#">
+                              <i class="fas fa-trash">
+                              </i>
+                              Delete
+                          </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Services faqs Table</h3>
+
+                
+
+                <div class="card-tools">
+
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <button type="button" class="btn btn-success  " data-toggle="modal" data-target="#modal-faq">
+                    Add new service
+                    </button>
+                  </div>
+
+                   <div class="modal fade" id="modal-faq">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">Service faq</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                             <form>
+                                <div class="card-body">
+
+                                  <div class="form-group">
+                                    <label for="question">Question</label>
+                                    <textarea class="form-control" id="question" placeholder="Question"></textarea>
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="answer">Answer</label>
+                                    <textarea class="form-control" id="answer" placeholder="Answer"></textarea> 
+                                  </div>
+
+
+                                  <div class="form-group">
+                                    <label for="direction">Service</label>
+                                    <select id="direction" class="form-control custom-select">
+                                      <option selected disabled>Select one</option>
+                                      <option>ltr</option>
+                                      <option>rtl</option>
+                                    </select>
+                                  </div>
+
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                  <button type="submit" class="btn btn-primary">Save</button>
+                                  <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                                </div>
+                              </form>
+                          </div>
+                        </div>
+                        <!-- /.modal-content -->
+                      </div>
+                      <!-- /.modal-dialog -->
+                    </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Question</th>
+                      <th>Answer</th>
+                      <th>Service</th>
+                      <th>Action</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>question1</td>
+                      <td>answer1</td>
+                      <td>service1</td>
+                      <td class="project-actions text-left">
+                          <a class="btn btn-info btn-sm" href="#">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Edit
+                          </a>
+                          <a class="btn btn-danger btn-sm" href="#">
+                              <i class="fas fa-trash">
+                              </i>
+                              Delete
+                          </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>question2</td>
+                      <td>answer2</td>
+                      <td>service2</td>
+                      <td class="project-actions text-left">
+                          <a class="btn btn-info btn-sm" href="#">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Edit
+                          </a>
+                          <a class="btn btn-danger btn-sm" href="#">
+                              <i class="fas fa-trash">
+                              </i>
+                              Delete
+                          </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Services faqs docs Table</h3>
+
+                
+
+                <div class="card-tools">
+
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <button type="button" class="btn btn-success  " data-toggle="modal" data-target="#modal-faq-doc">
+                    Add new service faq doc
+                    </button>
+                  </div>
+
+                   <div class="modal fade" id="modal-faq-doc">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">Service faq doc</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                             <form>
+                                <div class="card-body">
+
+                                  <div class="form-group">
+                                    <label for="title">Title</label>
+                                    <input type="text" class="form-control" id="title" placeholder="Title">
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="type">Type</label>
+                                    <input type="text" class="form-control" id="type" placeholder="Type">
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="path">Path</label>
+                                    <textarea class="form-control" id="path" placeholder="Path"></textarea> 
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="direction">faqs</label>
+                                    <select id="direction" class="form-control custom-select">
+                                      <option selected disabled>Select one</option>
+                                      <option>ltr</option>
+                                      <option>rtl</option>
+                                    </select>
+                                  </div>
+
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                  <button type="submit" class="btn btn-primary">Save</button>
+                                  <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                                </div>
+                              </form>
+                          </div>
+                        </div>
+                        <!-- /.modal-content -->
+                      </div>
+                      <!-- /.modal-dialog -->
+                    </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Title</th>
+                      <th>Type</th>
+                      <th>Path</th>
+                      <th>Faq</th>
+                      <th>Action</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>title1</td>
+                      <td>type1</td>
+                      <td>path1</td>
+                      <td>faq1</td>
+                      <td class="project-actions text-left">
+                          <a class="btn btn-info btn-sm" href="#">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Edit
+                          </a>
+                          <a class="btn btn-danger btn-sm" href="#">
+                              <i class="fas fa-trash">
+                              </i>
+                              Delete
+                          </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>title2</td>
+                      <td>type2</td>
+                      <td>path2</td>
+                      <td>faq2</td>
+                      <td class="project-actions text-left">
+                          <a class="btn btn-info btn-sm" href="#">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Edit
+                          </a>
+                          <a class="btn btn-danger btn-sm" href="#">
+                              <i class="fas fa-trash">
+                              </i>
+                              Delete
+                          </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Services faqs links Table</h3>
+
+                
+
+                <div class="card-tools">
+
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <button type="button" class="btn btn-success  " data-toggle="modal" data-target="#modal-faq-link">
+                    Add new service faq link
+                    </button>
+                  </div>
+
+                   <div class="modal fade" id="modal-faq-link">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">Service faq link</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                             <form>
+                                <div class="card-body">
+
+                                  <div class="form-group">
+                                    <label for="type">Type</label>
+                                    <input type="text" class="form-control" id="type" placeholder="Type">
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="target">Target</label>
+                                    <select id="target" class="form-control custom-select">
+                                      <option selected disabled>Select one</option>
+                                      <option>ltr</option>
+                                      <option>rtl</option>
+                                    </select>
+                                  </div>
+
+                                  <div class="form-group">
+                                    <label for="faq">faqs</label>
+                                    <select id="faq" class="form-control custom-select">
+                                      <option selected disabled>Select one</option>
+                                      <option>ltr</option>
+                                      <option>rtl</option>
+                                    </select>
+                                  </div>
+
+                                </div>
+                                <!-- /.card-body -->
+
+                                <div class="card-footer">
+                                  <button type="submit" class="btn btn-primary">Save</button>
+                                  <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                                </div>
+                              </form>
+                          </div>
+                        </div>
+                        <!-- /.modal-content -->
+                      </div>
+                      <!-- /.modal-dialog -->
+                    </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Type</th>
+                      <th>Target</th>
+                      <th>Faq</th>
+                      <th>Action</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>type1</td>
+                      <td>target1</td>
+                      <td>faq1</td>
+                      <td class="project-actions text-left">
+                          <a class="btn btn-info btn-sm" href="#">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Edit
+                          </a>
+                          <a class="btn btn-danger btn-sm" href="#">
+                              <i class="fas fa-trash">
+                              </i>
+                              Delete
+                          </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>type2</td>
+                      <td>target2</td>
+                      <td>faq2</td>
+                      <td class="project-actions text-left">
+                          <a class="btn btn-info btn-sm" href="#">
+                              <i class="fas fa-pencil-alt">
+                              </i>
+                              Edit
+                          </a>
+                          <a class="btn btn-danger btn-sm" href="#">
+                              <i class="fas fa-trash">
+                              </i>
+                              Delete
+                          </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+    <div class="p-3">
+      <h5>Title</h5>
+      <p>Sidebar content</p>
+    </div>
+  </aside>
+  <!-- /.control-sidebar -->
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <!-- To the right -->
+    <div class="float-right d-none d-sm-inline">
+      Anything you want
+    </div>
+    <!-- Default to the left -->
+    <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+  </footer>
+</div>
+{% endblock %}
